@@ -39,7 +39,7 @@ import Footer from "./website/Pages/Footer";
 function AppWrapper() {
   const location = useLocation();
   const hideNav = location.pathname.startsWith("/admin");
-
+ 
   return (
     <>
       {!hideNav && <NavBar />}
@@ -48,7 +48,10 @@ function AppWrapper() {
         <Route path="/Register" element={<Register />} />
         <Route path="/signup" element={<Login />} />
         <Route path="/about" element={<About />} />
-        <Route path="/writeBlogs" element={<WriteBlogs />} />
+        <Route path="/writeBlogs" element={
+          <UserProtectedRoute>
+            <WriteBlogs />
+          </UserProtectedRoute>} />
         <Route path="/blogsDetails/:id" element={<BlogsDetails/>} />
         <Route path="/profile" element={
           <UserProtectedRoute>

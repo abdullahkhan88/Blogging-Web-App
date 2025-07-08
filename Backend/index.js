@@ -36,6 +36,10 @@ app.use('/admin/api', adminCategoryRoutes);
 app.use('/admin/api', adminBlogs);
 app.use('/admin/api', adminCommentRoutes);
 
+app.get("/", (req,res)=>{
+    res.send("this is server page")
+})
+
 //http://localhost:8000/admin/api/adminInsert;
 //http://localhost:8000/admin/api/adminlogin
 

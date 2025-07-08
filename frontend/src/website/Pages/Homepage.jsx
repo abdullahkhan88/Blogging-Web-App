@@ -9,7 +9,18 @@ export const Card = ({ blogs, username }) => {
 
   const handleReadMore = () => {
     if (!username) {
-      toast.info('Please login to read this blog.');
+      toast.info('Please login to read this blog.', {
+        position: "top-right",
+        style: {
+          width: "400px", 
+          height: "100px",
+          fontSize: "20px",
+          color: "#073ded",
+          boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
+          borderLeft: "6px solid rgba(39, 159, 224, 0.88)", // warning yellow stripe
+          padding: "1rem 1.2rem",
+        }
+      });
     }
   };
 
