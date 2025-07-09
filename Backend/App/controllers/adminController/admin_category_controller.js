@@ -23,7 +23,6 @@ const createCategory = async (req, res) => {
         );
     };
 };
-
 // show Category List Data
 
 const showCategory = async (req, res) =>{
