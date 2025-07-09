@@ -9,7 +9,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post('http://localhost:8000/web/api/userLogin', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/web/api/userLogin`, {
         email,
         password
       });

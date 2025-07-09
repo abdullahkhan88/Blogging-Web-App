@@ -31,7 +31,7 @@ const WriteBlog = () => {
     try {
       let token = sessionStorage.getItem("user_token");
       
-      const response = await axios.get("http://localhost:8000/web/api/getBlogs",{
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/web/api/getBlogs`,{
         headers:{
           Authorization:`Bearer ${token}`
         }
@@ -71,7 +71,7 @@ const WriteBlog = () => {
       const token = sessionStorage.getItem("user_token");
 
       const response = await axios.post(
-        "http://localhost:8000/web/api/writeBlog",
+        `${import.meta.env.VITE_API_URL}/web/api/writeBlog`,
         formData,
         {
           headers: {
@@ -123,7 +123,7 @@ const WriteBlog = () => {
 
     try {
       const token = sessionStorage.getItem("user_token");
-      await axios.delete(`http://localhost:8000/web/api/deleteBlog/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/web/api/deleteBlog/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -227,7 +227,7 @@ const WriteBlog = () => {
                     <tr key={blog._id} className="hover:bg-purple-50 transition">
                       <td className="px-6 py-4">
                         <img
-                          src={`http://localhost:8000/uploads/UserBlog/${blog.photo}`}
+                          src={`${import.meta.env.VITE_API_URL}/uploads/UserBlog/${blog.photo}`}
                           alt="Blog"
                           className="w-14 h-14 object-cover rounded-md border"
                         />

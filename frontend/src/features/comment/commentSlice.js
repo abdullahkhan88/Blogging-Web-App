@@ -70,7 +70,7 @@ export const approveComment = createAsyncThunk(
   async ({ commentId, token }, thunkAPI) => {
     try {
       const res = await axios.patch(
-        `http://localhost:8000/admin/api/approveComment/${commentId}`,
+        `${import.meta.env.VITE_API_URL}/admin/api/approveComment/${commentId}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` }

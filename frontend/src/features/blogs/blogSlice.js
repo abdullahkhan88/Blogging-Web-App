@@ -8,8 +8,8 @@ export const fetchBlogs = createAsyncThunk('blog/fetchBlogs', async (_, { reject
     const token = sessionStorage.getItem('user_token');
     // 🔀 Call both APIs in parallel
     const [adminRes, userRes] = await Promise.all([
-      axios.get('http://localhost:8000/admin/api/showblogs'),
-      axios.get('http://localhost:8000/web/api/getUserApprovedBlog', {
+      axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showblogs`),
+      axios.get(`${import.meta.env.VITE_API_URL}/web/api/getUserApprovedBlog`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -43,7 +43,7 @@ export const fetchCategories = createAsyncThunk('blog/fetchCategories', async ()
 //  Like blog
 export const likeBlog = createAsyncThunk('blog/likeBlog', async ({ blogId, token,usertype }) => {
   const response = await axios.put(
-    `http://localhost:8000/web/api/like/${blogId}`,
+    `${import.meta.env.VITE_API_URL}/web/api/like/${blogId}`,
     {usertype},
     {
       headers: {
@@ -60,7 +60,7 @@ export const dislikeBlog = createAsyncThunk(
   'blog/dislikeBlog',
   async ({ blogId, token, usertype }, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:8000/web/api/dislikes/${blogId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/web/api/dislikes/${blogId}`, {
         body:JSON.stringify({usertype}),
         method: 'PUT',
         headers: {

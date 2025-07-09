@@ -68,7 +68,7 @@ const ProfilePage = () => {
         data.append("profile", formData.profile);  // yeh file object hai
       }
 
-      const res = await axios.put("http://localhost:8000/web/api/updateProfile", data, {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/web/api/updateProfile`, data, {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem('user_token')}`
         }
@@ -99,7 +99,7 @@ const ProfilePage = () => {
                 src={
                   typeof formData.profile === "object"
                     ? URL.createObjectURL(formData.profile)
-                    : `http://localhost:8000/uploads/users/${formData.profile}`
+                    : `${import.meta.env.VITE_API_URL}/uploads/users/${formData.profile}`
                 }
                 alt="Profile"
                 className="w-22 h-22 rounded-full object-cover"

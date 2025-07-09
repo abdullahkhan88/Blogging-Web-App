@@ -19,7 +19,7 @@ const ChangePassword = () => {
         setError("");
         try {
             const res = await axios.put(
-                "http://localhost:8000/web/api/changepassword",
+                `${import.meta.env.VITE_API_URL}/web/api/changepassword`,
                 {
                     oldPassword,
                     newPassword,

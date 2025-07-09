@@ -13,7 +13,7 @@ const MyBlogs = () => {
       try {
         const token = sessionStorage.getItem("user_token");
 
-        const res = await axios.get("http://localhost:8000/web/api/getLoginUserBlog", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/web/api/getLoginUserBlog`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ const MyBlogs = () => {
           className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4 flex flex-col"
         >
           <img
-            src={`http://localhost:8000/uploads/UserBlog/${blog.photo}`}
+            src={`${import.meta.env.VITE_API_URL}/uploads/UserBlog/${blog.photo}`}
             alt={blog.title}
             className="rounded-md h-48 w-full object-cover mb-4"
           />
