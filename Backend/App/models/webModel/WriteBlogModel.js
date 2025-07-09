@@ -23,7 +23,7 @@ const WebUserBlogSchema = new mongoose.Schema({
   },
   createdByRole: {
     type: String,
-    enum: ['User'],
+    enum: ['user'],
     default: 'User' // locked to 'User' blogs only
   },
   isApproved: {

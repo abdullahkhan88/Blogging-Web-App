@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
+
 const MyBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ const MyBlogs = () => {
       try {
         const token = sessionStorage.getItem("user_token");
 
-        const res = await axios.get("http://localhost:8000/web/api/getUserApprovedBlog", {
+        const res = await axios.get("http://localhost:8000/web/api/getLoginUserBlog", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

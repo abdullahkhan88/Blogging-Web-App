@@ -12,6 +12,7 @@ const ProfilePage = () => {
     mobile: "",
     profile: "",
     address: "",
+    dob:""
   });
 
   useEffect(() => {
@@ -62,14 +63,14 @@ const ProfilePage = () => {
       data.append("gender", formData.gender);
       data.append("mobile", formData.mobile);
       data.append("address", formData.address);
+      data.append("dob", formData.dob);
       if (formData.profile) {
         data.append("profile", formData.profile);  // yeh file object hai
       }
 
       const res = await axios.put("http://localhost:8000/web/api/updateProfile", data, {
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem('userToken')}`
-
+          Authorization: `Bearer ${sessionStorage.getItem('user_token')}`
         }
       });
 
@@ -85,7 +86,7 @@ const ProfilePage = () => {
     }
 
   };
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-lg flex flex-col md:flex-row p-6 gap-6 min-h-[80vh] transition-all duration-500 ease-in-out">

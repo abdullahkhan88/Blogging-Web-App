@@ -53,7 +53,10 @@ const fetchAllPendingWebBlogs = async (req, res) => {
 
 const fetchAllWebBlogs = async (req, res) => {
   try {
-    const blogs = await WebUserModel.find().sort({ createdAt: -1 }); // latest first
+    const userId = req.user.id;
+    const blogs = await WebUserModel.find({
+      createdBy:userId
+    }).sort({ createdAt: -1 }); // latest first
     res.status(200).json(blogs);
   } catch (error) {
     res.status(500).json({ message: "Something went wrong", error: error.message });
@@ -170,7 +173,6 @@ const getPendingBlogCount = async (req, res) => {
 const getUserApprovedBlogs = async (req, res) => {
   try {
     //const userId = req.user.id; // Ensure JWT middleware laga ho
-
     const blogs = await WebUserModel.find({
       // createdBy: userId,
       isApproved: true,
@@ -178,6 +180,24 @@ const getUserApprovedBlogs = async (req, res) => {
     }).populate("createdBy", "username");
     res.status(200).json(blogs);
   } catch (error) {
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+// Jo user Login hai usi ka blog show karna 
+
+const getLoginUserBlogs = async (req, res) => {
+  try {
+    const userId = req.user.id;  // JWT middleware se milta hai user id
+    const blogs = await WebUserModel.find({
+      createdBy: userId,         // Sirf login user ke blogs
+      isApproved: true,          // Approve hone chahiye
+      isRejected: false          // Reject nahi hone chahiye
+    }).populate("createdBy", "username"); // User ka naam bhi bhejna
+
+    res.status(200).json(blogs);
+  } catch (error) {
+    console.error("Error fetching login user's blogs:", error.message);
     res.status(500).json({ message: "Something went wrong" });
   }
 };
@@ -192,5 +212,6 @@ module.exports = {
   approveBlog,
   rejectBlog,
   getPendingBlogCount,
-  getUserApprovedBlogs
+  getUserApprovedBlogs,
+  getLoginUserBlogs
 };

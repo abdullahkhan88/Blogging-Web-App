@@ -26,23 +26,29 @@ const WriteBlog = () => {
     }
   };
 
-  // ✅ Fetch blogs
+  //  Fetch blogs
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/web/api/getBlogs");
+      let token = sessionStorage.getItem("user_token");
+      
+      const response = await axios.get("http://localhost:8000/web/api/getBlogs",{
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      });
       setBlogs(response.data);
     } catch (error) {
       console.error("Failed to fetch blogs:", error);
     }
   };
 
-  // ✅ On mount, fetch both blogs and categories
+  //  On mount, fetch both blogs and categories
   useEffect(() => {
     fetchBlogs();
     fetchCategories();
   }, []);
 
-  // ✅ Submit blog
+  // Submit blog
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -96,7 +102,7 @@ const WriteBlog = () => {
         Swal.fire({
           icon: 'error',
           title: 'Failed!',
-          text: 'Blog could not be created ❌',
+          text: 'Blog could not be created ',
         });
       }
     } catch (err) {

@@ -90,6 +90,7 @@ const UpdateProfile = async (req, res) => {
     if (req.file) {
         updatedData.profile = req.file.filename; // ya koi aur field name
     }
+    // iska matalb iss fild ko update nhi karna hai
     delete updatedData.email;
     delete updatedData.password;
     

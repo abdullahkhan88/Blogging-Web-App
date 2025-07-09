@@ -16,13 +16,13 @@ export const fetchBlogs = createAsyncThunk('blog/fetchBlogs', async (_, { reject
       }),
     ]);
 
-    // 📦 Combine both blog arrays
+    //  Combine both blog arrays
     const combined = [...adminRes.data.data, ...userRes.data];
 
-    // 🕐 Sort by latest
+    //  Sort by latest
     combined.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    // ✅ Return to reducer
+    // Return to reducer
     return combined;
   } catch (err) {
     return rejectWithValue(err.response?.data || err.message);
