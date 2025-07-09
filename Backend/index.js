@@ -20,6 +20,14 @@ connectDB();// database call
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(cors({
+  origin: [
+    "http://localhost:5173", // local dev (optional)
+    "https://blogging-web-app-xjmt.onrender.com" // 🟢 your frontend URL
+  ],
+  credentials: true
+}));
+
 app.use('/web/api', userRoutes);
 app.use('/web/api', userCommentRoutes);
 app.use('/web/api', userLikeRoutes);
