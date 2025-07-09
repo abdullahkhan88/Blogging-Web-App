@@ -24,11 +24,11 @@ function Register() {
     setMessage('');
 
     try {
-      const res = await axios.post('http://localhost:8000/web/api/userInsert', formData);
-      setMessage('✅ Registered Successfully!');
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/web/api/userInsert`, formData);
+      setMessage('Registered Successfully!');
       setFormData({ username: '', email: '', password: '' });
     } catch (error) {
-      setMessage('❌ Registration Failed. Try Again!');
+      setMessage('Registration Failed. Try Again!');
       console.error('Error saving data:', error);
     }
   };
