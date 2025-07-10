@@ -36,7 +36,7 @@ export const fetchBlogs = createAsyncThunk('blog/fetchBlogs', async (_, { reject
 
 //  Fetch all categories
 export const fetchCategories = createAsyncThunk('blog/fetchCategories', async () => {
-  const response = await axios.get('http://localhost:8000/admin/api/showCategory');
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showCategory`);
   return response.data.data;
 });
 
