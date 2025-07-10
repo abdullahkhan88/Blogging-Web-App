@@ -25,7 +25,7 @@ const AdminCategory = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('http://localhost:8000/admin/api/CreateCategory', formData);
+        await axios.post(`${import.meta.env.VITE_API_URL}/admin/api/CreateCategory`, formData);
         getAllCategory();
         Swal.fire('Success!', 'Your Data Save Successfully.', 'success');
         setFormData({
@@ -36,7 +36,7 @@ const AdminCategory = () => {
 
     const getAllCategory = async () => {
         try {
-            let categoryData = await axios.get('http://localhost:8000/admin/api/showCategory');
+            let categoryData = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showCategory`);
             setCategoryData(categoryData.data.data);
         } catch (error) {
             console.error("Failed to load category", error)
@@ -62,7 +62,7 @@ const AdminCategory = () => {
             });
 
             if (result.isConfirmed) {
-                await axios.delete(`http://localhost:8000/admin/api/deleteCategory/${id}`);
+                await axios.delete(`${import.meta.env.VITE_API_URL}/admin/api/deleteCategory/${id}`);
                 getAllCategory();
                 Swal.fire('Deleted!', 'Your item has been deleted.', 'success');
 
@@ -78,7 +78,7 @@ const AdminCategory = () => {
     const getSingleCategory = async (id) => {
         setUpdateId(id);
         try {
-            let resData = await axios.get(`http://localhost:8000/admin/api/getCategory/${id}`);
+            let resData = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/getCategory/${id}`);
             let data = resData.data.result;
             setFormData({
                 category: data.category,
@@ -94,7 +94,7 @@ const AdminCategory = () => {
         e.preventDefault();
 
         try {
-            await axios.put(`http://localhost:8000/admin/api/updateCategory/${updateId}`, formData);
+            await axios.put(`${import.meta.env.VITE_API_URL}/admin/api/updateCategory/${updateId}`, formData);
             setUpdateId(null);
             setFormData({ category: "", status: "" });
             getAllCategory();

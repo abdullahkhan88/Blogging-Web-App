@@ -31,7 +31,7 @@ const DashBoard = () => {
       try {
         const token = sessionStorage.getItem("token");
 
-        const res = await axios.get(`http://localhost:8000/admin/api/${endpoint}`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/${endpoint}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -47,7 +47,7 @@ const DashBoard = () => {
       try {
         const token = sessionStorage.getItem("token");
 
-        const res = await axios.get(`http://localhost:8000/web/api/${endpoints}`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/web/api/${endpoints}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

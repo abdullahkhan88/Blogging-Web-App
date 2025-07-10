@@ -19,7 +19,7 @@ const ProfilePage = () => {
     const fetchUserProfile = async () => {
       try {
         const token = sessionStorage.getItem('user_token');
-        const res = await axios.get(`http://localhost:8000/web/api/Profile`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/web/api/Profile`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 

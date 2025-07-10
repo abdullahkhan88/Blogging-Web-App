@@ -8,7 +8,7 @@ export const fetchComments = createAsyncThunk(
     try {
       const token = sessionStorage.getItem('user_token'); // ya sessionStorage.getItem() if you're using that
 
-      const res = await axios.get(`http://localhost:8000/web/api/fetchComment/${blogId}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/web/api/fetchComment/${blogId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -26,7 +26,7 @@ export const postComment = createAsyncThunk(
   'comments/postComment',
   async ({ blogId, text, token }) => {
     const response = await axios.post(
-      'http://localhost:8000/web/api/comment',
+      `${import.meta.env.VITE_API_URL}/web/api/comment`,
       { blogId, text },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -39,7 +39,7 @@ export const deleteComment = createAsyncThunk(
   'comments/deleteComment',
   async ({ commentId, token }, thunkAPI) => {
     try {
-      await axios.delete(`http://localhost:8000/web/api/deleteComment/${commentId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/web/api/deleteComment/${commentId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -56,7 +56,7 @@ export const fetchPendingComments = createAsyncThunk(
   'comments/fetchPendingComments',
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get('http://localhost:8000/admin/api/pendingComments');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/pendingComments`);
       return res.data.comments;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);

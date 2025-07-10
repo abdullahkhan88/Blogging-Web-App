@@ -13,9 +13,9 @@ const AdminBlogs = () => {
 
   const getAllCategory = async () => {
     try {
-      let categoryData = await axios.get('http://localhost:8000/admin/api/showCategory');// ye data dusre page ke api se aa raha 
+      let categoryData = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showCategory`);// ye data dusre page ke api se aa raha 
       let category = categoryData.data.data;
-      let blogsData = await axios.get('http://localhost:8000/admin/api/showblogs'); // blogs data ko show karne ke liye table mein
+      let blogsData = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showblogs`); // blogs data ko show karne ke liye table mein
 
       setBlogsData(blogsData.data.data);
       setCategory(category);
@@ -49,7 +49,7 @@ const AdminBlogs = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      await axios.post('http://localhost:8000/admin/api/createblogs', formData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/admin/api/createblogs`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`
@@ -85,7 +85,7 @@ const AdminBlogs = () => {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:8000/admin/api/deleteblogs/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/admin/api/deleteblogs/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -104,7 +104,7 @@ const AdminBlogs = () => {
   const getSingleBlog = async (id) => {
     try {
       setblogId(id);
-      let resData = await axios.get(`http://localhost:8000/admin/api/getsingleblogs/${id}`);
+      let resData = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/getsingleblogs/${id}`);
       let data = resData.data.result
       setFormData({
         category: data.category,
@@ -122,7 +122,7 @@ const AdminBlogs = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8000/admin/api/updateblogs/${blogId}`, formData);
+      await axios.put(`${import.meta.env.VITE_API_URL}/admin/api/updateblogs/${blogId}`, formData);
       setblogId(null);
       setFormData({ category: "", title: "", description: "" });
       getAllCategory();
@@ -232,7 +232,7 @@ const AdminBlogs = () => {
                         <tr className="border-b text-black" key={index}>
                           <td className="py-3 px-6">{index + 1}</td>
                           <td className="py-3 px-6">
-                            <img src={`http://localhost:8000/uploads/${item.photo}`} className="w-8 h-8" alt="Thumbnail" />
+                            <img src={`${import.meta.env.VITE_API_URL}/uploads/${item.photo}`} className="w-8 h-8" alt="Thumbnail" />
                           </td>
                           <td className="py-3 px-6">{item.category}</td>
 

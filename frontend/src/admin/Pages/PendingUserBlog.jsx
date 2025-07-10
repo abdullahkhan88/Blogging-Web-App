@@ -8,7 +8,7 @@ const PendingBlogList = () => {
 
   const fetchPendingBlogs = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/web/api/getPendingBlogs");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/web/api/getPendingBlogs`);
       setPendingBlogs(res.data || []); // adjust if needed
 
     } catch (err) {
@@ -22,7 +22,7 @@ const PendingBlogList = () => {
 
   const handleApprove = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:8000/web/api/approveBlog/${id}`);
+      const response = await axios.patch(`${import.meta.env.VITE_API_URL}/web/api/approveBlog/${id}`);
 
       if (response.data.success) {
         Swal.fire({
@@ -63,7 +63,7 @@ const handleReject = async (id) => {
     if (!rejectionReason) return;
 
     const response = await axios.put(
-      `http://localhost:8000/web/api/rejectedBlogs/${id}`,
+      `${import.meta.env.VITE_API_URL}/web/api/rejectedBlogs/${id}`,
       { rejectionReason }
     );
 
@@ -103,7 +103,7 @@ const handleReject = async (id) => {
 
               {/* Blog Image */}
               <img
-                src={`http://localhost:8000/uploads/UserBlog/${blog.photo}`}
+                src={`${import.meta.env.VITE_API_URL}/uploads/UserBlog/${blog.photo}`}
                 alt="Blog Thumbnail"
                 className="w-full md:w-72 h-48 md:h-44 object-cover rounded-xl border"
               />

@@ -20,7 +20,7 @@ const AdminUser = () => {
     const HandleChange = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:8000/admin/api/adminInsert", {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/admin/api/adminInsert`, {
                 name,
                 username,
                 password,
@@ -53,7 +53,7 @@ const AdminUser = () => {
 
     const FetchAllData = async () => {
         try {
-            let res = await axios.get('http://localhost:8000/admin/api/adminList');
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/adminList`);
             setAdminData(res.data.data);
             
         } catch (error) {
@@ -80,7 +80,7 @@ const AdminUser = () => {
             });
             
             if (result.isConfirmed) {
-                await axios.delete(`http://localhost:8000/admin/api/adminDelete/${id}`,{
+                await axios.delete(`${import.meta.env.VITE_API_URL}/admin/api/adminDelete/${id}`,{
                     headers:{
                         Authorization:`Bearer ${token}`
                     }
@@ -100,7 +100,7 @@ const AdminUser = () => {
     const EditAdmin = async (id)=>{
         setadminid(id);
         try{
-            let res = await axios.get(`http://localhost:8000/admin/api/getadminSingle/${id}`);
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/getadminSingle/${id}`);
             let data = res.data;
             Setname(data.result.name)
             SetUsername(data.result.username)
@@ -122,7 +122,7 @@ const AdminUser = () => {
             status
         }
         try{
-            let DataRes = await axios.put(`http://localhost:8000/admin/api/updateAdminList/${adminid}`,obj); 
+            let DataRes = await axios.put(`${import.meta.env.VITE_API_URL}/admin/api/updateAdminList/${adminid}`,obj); 
             Swal.fire({
                 title: 'Success!',
                 text: "Data Update Successfully",
