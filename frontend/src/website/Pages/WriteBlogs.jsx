@@ -17,7 +17,7 @@ const WriteBlog = () => {
   const fetchCategories = async () => {
 
     try {
-      const response = await axios.get("http://localhost:8000/admin/api/showCategory");
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showCategory`);
       //console.log(response.data.data)
       setCategories(response.data.data || []); // adjust according to API response shape
 
