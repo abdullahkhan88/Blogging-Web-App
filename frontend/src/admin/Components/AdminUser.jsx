@@ -176,7 +176,7 @@ const AdminUser = () => {
                                 />
                                 <label htmlFor="Password" className="text-gray-700 mt-3 text-semibold">Password</label>
                                 <input
-                                     value={password.password || ""}
+                                    value={password || ""}
                                     required
                                     id="Password"
                                     onChange={(e) => setPassword(e.target.value)}
