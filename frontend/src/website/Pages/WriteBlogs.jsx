@@ -74,7 +74,7 @@ const WriteBlog = () => {
         `${import.meta.env.VITE_API_URL}/web/api/writeBlog`,
         formData,
         {
-          headers: {
+          headers:{
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
           },
