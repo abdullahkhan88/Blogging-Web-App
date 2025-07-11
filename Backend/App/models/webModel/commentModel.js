@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const commentSchema = new mongoose.Schema({
   blogId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Blogs',
+    ref: 'blogs',
     required: true
   },
   userId: { 
