@@ -34,7 +34,7 @@ const getPendingComments = async (req, res) => {
     const formatted = comments.map(comment => ({
       _id: comment._id,
       text: comment.text,
-      userName: comment.userId?.username || 'Unknown',
+      username: comment.userId?.username || 'Unknown',
       blogTitle: comment.blogId?.title || 'Unknown Blog',
       createdAt: comment.createdAt,
     }));

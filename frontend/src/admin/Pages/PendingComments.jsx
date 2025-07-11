@@ -62,7 +62,7 @@ const PendingComments = () => {
           <tbody className="divide-y divide-gray-200">
             {pendingComments.map((comment) => (
               <tr key={comment._id} className="hover:bg-gray-50">
-                <td className="px-4 py-3 text-gray-800">{comment.username}</td>
+                <td className="px-4 py-3 text-gray-800">{comment.userName}</td>
                 <td className="px-4 py-3 text-gray-700 max-w-sm">
                   {comment.text.length > 80 && expandedId !== comment._id ? (
                     <>
