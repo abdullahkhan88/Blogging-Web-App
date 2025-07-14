@@ -3,7 +3,7 @@ const BlogsModel = require('../../models/adminModel/admin_BlogsModel');
 const createBlogs = async (req, res) => {
   try {
     let { category, title, description } = req.body;
-    let photopath = req.file?.path || '';
+    let photopath = req.file?.filename || ''
     if (!req.file) {
       return res.status(400).send({ status: 0, message: "Photo is required" });
     };
@@ -19,8 +19,8 @@ const createBlogs = async (req, res) => {
       status: 1,
       message: "Data Save Successfully"
     });
-  } catch (error) {
-    res.status(500).send({ status: 0, message: "Internal Server Error", error })
+  } catch (err) {
+    res.status(500).send({ status: 0, message: "Internal Server Error", error:err })
   }
 };
 
