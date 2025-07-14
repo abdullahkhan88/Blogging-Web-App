@@ -1,3 +1,4 @@
+require("dotenv").config();
 const connectDB = require('./App/dbConnection/db');
 let express = require('express');
 const path = require('path');
@@ -12,7 +13,7 @@ const writeBlogRoutes = require('./App/routes/webRoutes/writeBlogRoute');
 const cors = require('cors');
 
 
-require("dotenv").config();
+
 let app = express();
 app.use(cors());
 app.use(express.json());

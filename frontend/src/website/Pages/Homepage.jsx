@@ -32,7 +32,7 @@ export const Card = ({ blogs, username }) => {
         {/* homepage photo ka path diya gya hai by condition kyoki dono aalg folder mein hai */}
         <img
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          src={`${import.meta.env.VITE_API_URL}/uploads/${blogs.createdByRole === 'User' ? 'UserBlog' : ''}/${blogs.photo}`}
+          src={blogs.photo}
           alt="Blog"
         />
         <div className="absolute top-2 left-2 bg-white/80 text-gray-700 text-xs px-3 py-1 rounded-full shadow">

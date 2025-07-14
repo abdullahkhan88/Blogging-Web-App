@@ -103,7 +103,7 @@ const handleReject = async (id) => {
 
               {/* Blog Image */}
               <img
-                src={`${import.meta.env.VITE_API_URL}/uploads/UserBlog/${blog.photo}`}
+                src={blog.photo}
                 alt="Blog Thumbnail"
                 className="w-full md:w-72 h-48 md:h-44 object-cover rounded-xl border"
               />

@@ -232,7 +232,7 @@ const AdminBlogs = () => {
                         <tr className="border-b text-black" key={index}>
                           <td className="py-3 px-6">{index + 1}</td>
                           <td className="py-3 px-6">
-                            <img src={`${import.meta.env.VITE_API_URL}/uploads/${item.photo}`} className="w-8 h-8" alt="Thumbnail" />
+                            <img src={item.photo} className="w-8 h-8" alt="Thumbnail" />
                           </td>
                           <td className="py-3 px-6">{item.category}</td>
 

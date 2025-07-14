@@ -13,7 +13,7 @@ const About = () => {
 
       {/* Who Am I Section */}
       <section className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">👨‍💻 Who Am I?</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2"> Who Am I?</h2>
         <p className="text-gray-700 leading-relaxed">
           I'm <strong>Abdullah Khan</strong>, a MERN Stack Developer who loves building modern web apps. I started this blog to document my journey, share learnings, and connect with like-minded coders.
         </p>
@@ -21,7 +21,7 @@ const About = () => {
 
       {/* What You'll Find */}
       <section className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">📚 What You'll Find</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2"> What You'll Find</h2>
         <ul className="list-disc pl-6 text-gray-700 space-y-1">
           <li>Step-by-step tutorials on React, Node, MongoDB</li>
           <li>Tips for beginners in web dev & DSA</li>
@@ -40,7 +40,7 @@ const About = () => {
 
       {/* Connect */}
       <section>
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">🤝 Let's Connect</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2"> Let's Connect</h2>
         <p className="text-gray-700">
           Got questions, ideas, or want to collaborate? Hit me up on{' '}
           <a

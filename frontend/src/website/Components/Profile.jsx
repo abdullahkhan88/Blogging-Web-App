@@ -99,7 +99,7 @@ const ProfilePage = () => {
                 src={
                   typeof formData.profile === "object"
                     ? URL.createObjectURL(formData.profile)
-                    : `${import.meta.env.VITE_API_URL}/uploads/users/${formData.profile}`
+                    : ""
                 }
                 alt="Profile"
                 className="w-22 h-22 rounded-full object-cover"

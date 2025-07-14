@@ -110,7 +110,7 @@ const BlogDetails = () => {
     <div className="max-w-4xl mx-auto px-6 py-12 bg-gray-50 rounded-3xl shadow-lg mt-12 mb-20">
       <div className="overflow-hidden rounded-3xl shadow-lg">
         <img
-          src={`${import.meta.env.VITE_API_URL}/uploads/${blog. createdByRole === 'User' ? 'UserBlog/' : ''}${blog.photo}`}
+          src={blog.photo}
           alt={blog.title}
           className="w-full h-96 object-cover object-center transition-transform duration-500 hover:scale-105"
         />

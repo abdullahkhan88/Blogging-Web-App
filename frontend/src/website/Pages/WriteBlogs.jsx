@@ -85,18 +85,18 @@ const WriteBlog = () => {
         Swal.fire({
           icon: 'success',
           title: 'Success!',
-          text: 'Blog created successfully ✅',
+          text: 'Blog created successfully ',
           timer: 2000,
           showConfirmButton: false,
         });
 
-        // ✅ Clear the form
+        //  Clear the form
         setTitle('');
         setCategory('');
         setDescription('');
         setPhoto(null);
 
-        // ✅ Refresh the blog list
+        // Refresh the blog list
         fetchBlogs();
       } else {
         Swal.fire({
@@ -110,7 +110,7 @@ const WriteBlog = () => {
       Swal.fire({
         icon: 'error',
         title: 'Server Error',
-        text: 'Something went wrong ⚠️',
+        text: 'Something went wrong ',
       });
     }
   };
@@ -227,7 +227,7 @@ const WriteBlog = () => {
                     <tr key={blog._id} className="hover:bg-purple-50 transition">
                       <td className="px-6 py-4">
                         <img
-                          src={`${import.meta.env.VITE_API_URL}/uploads/UserBlog/${blog.photo}`}
+                          src={blog.photo}
                           alt="Blog"
                           className="w-14 h-14 object-cover rounded-md border"
                         />

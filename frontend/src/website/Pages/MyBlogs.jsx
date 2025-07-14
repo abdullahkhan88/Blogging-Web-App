@@ -46,7 +46,7 @@ const MyBlogs = () => {
           className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4 flex flex-col"
         >
           <img
-            src={`${import.meta.env.VITE_API_URL}/uploads/UserBlog/${blog.photo}`}
+            src={blog.photo}
             alt={blog.title}
             className="rounded-md h-48 w-full object-cover mb-4"
           />

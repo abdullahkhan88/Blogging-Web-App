@@ -2,8 +2,6 @@ const BlogsModel = require('../../models/adminModel/admin_BlogsModel');
 
 const createBlogs = async (req, res) => {
   try {
-     console.log("🧪 req.body:", req.body);
-     console.log("🖼️ req.file:", req.file);
     let { category, title, description } = req.body;
     let photopath = req.file?.path || '';
     if (!req.file) {
