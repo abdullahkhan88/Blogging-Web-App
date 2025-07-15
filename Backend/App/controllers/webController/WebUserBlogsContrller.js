@@ -10,7 +10,7 @@ const createUserBlog = async (req, res) => {
     }
 
     // Photo path if uploaded
-    const photoPath = req.file?.filename || '';
+    const photoPath = req.file?.path|| '';
 
     const newBlog = new WebUserModel({
       title,
