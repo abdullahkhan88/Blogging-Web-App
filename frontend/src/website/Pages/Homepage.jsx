@@ -12,7 +12,7 @@ export const Card = ({ blogs, username }) => {
       toast.info('Please login to read this blog.', {
         position: "top-right",
         style: {
-          width: "400px",
+          width: "400px", 
           height: "100px",
           fontSize: "20px",
           color: "#073ded",
@@ -26,18 +26,15 @@ export const Card = ({ blogs, username }) => {
 
 
   return (
-
+    
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
       <div className="relative h-62 overflow-hidden">
 
         {/* homepage photo ka path diya gya hai by condition kyoki dono aalg folder mein hai */}
         <img
-          src={
-            blogs.photo.startsWith('http')
-              ? blogs.photo
-              : `https://blogging-web-app-server.onrender.com/${blog.photo}`
-          }
-          alt="blog image"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          src={blogs.photo}
+          alt="Blog"
         />
         <div className="absolute top-2 left-2 bg-white/80 text-gray-700 text-xs px-3 py-1 rounded-full shadow">
           {new Date(blogs.createdAt).toLocaleDateString('en-IN')}
