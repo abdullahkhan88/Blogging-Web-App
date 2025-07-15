@@ -4,7 +4,7 @@ const createBlogs = async (req, res) => {
   try {
     
     let { category, title, description } = req.body;
-    let photopath = req.file?.filename || ''
+    let photopath = req.file?.path || ''
     if (!req.file) {
       return res.status(400).send({ status: 0, message: "Photo is required" });
     };
