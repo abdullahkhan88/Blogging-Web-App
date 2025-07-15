@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const Card = ({ blogs, username }) => {
 
+  
   const handleReadMore = () => {
     if (!username) {
       toast.info('Please login to read this blog.', {
