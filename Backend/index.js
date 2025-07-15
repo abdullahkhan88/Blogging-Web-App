@@ -15,7 +15,7 @@ const cors = require('cors');
 
 
 let app = express();
-app.use(cors());
+/* app.use(cors()); */
 app.use(express.json());
 connectDB();// database call
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
   origin: [
     "http://localhost:5173", // local dev (optional)
-    "https://blogging-web-app-server.onrender.com" // 🟢 your frontend URL
+    "https://blogging-web-app-xjmt.onrender.com" //  your frontend URL
   ],
   credentials: true
 }));

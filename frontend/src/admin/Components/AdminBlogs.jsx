@@ -9,7 +9,7 @@ const AdminBlogs = () => {
   const [blogData, setBlogsData] = useState([]);
   const [blogId, setblogId] = useState('');
   const token = sessionStorage.getItem("token");
-
+  
 
   const getAllCategory = async () => {
     try {

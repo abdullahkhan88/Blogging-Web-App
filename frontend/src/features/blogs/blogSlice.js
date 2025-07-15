@@ -4,9 +4,9 @@ import axios from 'axios';
 //  Fetch all blogs
 export const fetchBlogs = createAsyncThunk('blog/fetchBlogs', async (_, { rejectWithValue }) => {
   try {
-    // 🔐 Get token from localStorage
+    // Get token from localStorage
     const token = sessionStorage.getItem('user_token');
-    // 🔀 Call both APIs in parallel
+    // Call both APIs in parallel
     const [adminRes, userRes] = await Promise.all([
       axios.get(`${import.meta.env.VITE_API_URL}/admin/api/showblogs`),
       axios.get(`${import.meta.env.VITE_API_URL}/web/api/getUserApprovedBlog`, {
