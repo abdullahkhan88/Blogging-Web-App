@@ -10,10 +10,10 @@ const WriteBlog = () => {
   const [photo, setPhoto] = useState(null);
   const [message, setMessage] = useState('');
   const [blogs, setBlogs] = useState([]);
-  const [categories, setCategories] = useState([]); // ✅ for fetched categories
+  const [categories, setCategories] = useState([]); // for fetched categories
 
 
-  // ✅ Fetch categories
+  // Fetch categories
   const fetchCategories = async () => {
 
     try {

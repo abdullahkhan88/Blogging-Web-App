@@ -88,7 +88,7 @@ const UpdateProfile = async (req, res) => {
     const userId = req.user.id;
     const updatedData = req.body;
     if (req.file) {
-        updatedData.profile = req.file.filename; // ya koi aur field name
+        updatedData.profile = req.file.path; // ya koi aur field name
     }
     // iska matalb iss fild ko update nhi karna hai
     delete updatedData.email;

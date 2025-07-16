@@ -160,7 +160,8 @@ const rejectBlog = async (req, res) => {
 
 const getPendingBlogCount = async (req, res) => {
   try {
-    const count = await BlogModel.countDocuments({ isApproved: false });
+    const count = await WebUserModel.countDocuments({ isApproved: false });
+    
     res.status(200).json({ count });
   } catch (err) {
     res.status(500).json({ message: "Error fetching pending blog count" });

@@ -113,7 +113,7 @@ function Homepage() {
   return (
     <div className="bg-gradient-to-br from-gray-100 to-white min-h-screen py-6">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="p-4 shadow bg-gradient-to-r from-blue-200 to-indigo-100 rounded-xl mb-6">
+        <div className="p-4 shadow bg-gradient-to-r from-blue-400 to-indigo-100 rounded-xl mb-6">
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
             <button
               className="px-5 py-2 rounded-full border text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm hover:shadow-md"
@@ -126,7 +126,7 @@ function Homepage() {
                 <Button key={cat._id} category={cat} onClick={handleCategoryClick} />
               ))
             ) : (
-              <p>Categories not found.</p>
+              <p className='text-blue-200 text-semibold'>Categories not found.</p>
             )}
           </div>
         </div>

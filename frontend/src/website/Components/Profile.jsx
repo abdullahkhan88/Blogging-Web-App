@@ -97,25 +97,23 @@ const ProfilePage = () => {
             {formData.profile && (
               <img
                 src={
-                  typeof formData.profile === "object"
-                    ? URL.createObjectURL(formData.profile)
-                    : ""
+                   user.profile
                 }
                 alt="Profile"
-                className="w-22 h-22 rounded-full object-cover"
+                className="w-25 h-25 rounded-full object-cover"
               />
             )}
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-gray-500">👤 Username</p>
+            <p className="text-sm text-gray-500"> Username</p>
             <h3 className="text-xl font-semibold text-gray-800">
               {user ? user.username.charAt(0).toUpperCase() + user.username.slice(1) : "Loading..."}
             </h3>
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-gray-500">📧 Email</p>
+            <p className="text-sm text-gray-500"> Email</p>
             <p className="text-gray-700 font-medium">{user?.email || "Loading..."}</p>
           </div>
 
@@ -247,17 +245,17 @@ const ProfilePage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
-                  <p className="text-sm text-gray-500">📧 Email Address</p>
+                  <p className="text-sm text-gray-500"> Email Address</p>
                   <p className="text-lg font-semibold text-gray-700">{user?.email || "Not available"}</p>
                 </div>
 
                 <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
-                  <p className="text-sm text-gray-500">🧑 Gender</p>
+                  <p className="text-sm text-gray-500"> Gender</p>
                   <p className="text-lg font-semibold text-gray-700 capitalize">{user?.gender || "Not specified"}</p>
                 </div>
 
                 <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
-                  <p className="text-sm text-gray-500">📞 Mobile Number</p>
+                  <p className="text-sm text-gray-500"> Mobile Number</p>
                   <p className="text-lg font-semibold text-gray-700">{user?.mobile || "Not available"}</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
@@ -266,7 +264,7 @@ const ProfilePage = () => {
                 </div>
 
                 <div className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
-                  <p className="text-sm text-gray-500">📍 Address</p>
+                  <p className="text-sm text-gray-500"> Address</p>
                   <p className="text-lg font-semibold text-gray-700">{user?.address || "Not available"}</p>
                 </div>
               </div>
