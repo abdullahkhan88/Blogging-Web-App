@@ -117,7 +117,7 @@ const BlogDetails = () => {
       </div>
 
       <div className="mt-8">
-        <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight">{blog.title || "Untitled Blog"}</h1>
+        <h1 className="text-4xl font-extrabold text-gray-800 tracking-tight">{blog.title || "Untitled Blog"}</h1>
         <p className="text-sm text-gray-500 mt-2">
           By {blog.createdBy?.name || blog.createdBy?.username || "Unknown"} •{" "}
           {new Date(blog.createdAt).toLocaleString('en-IN', {
@@ -166,7 +166,7 @@ const BlogDetails = () => {
                 (comment.isApproved || comment.userId.username === username)
               )
               .map((comment) => (
-                <li key={comment._id} className="bg-gray-100 p-3 rounded-xl shadow-sm">
+                <li key={comment._id} className="bg-purple-100 p-3 rounded-xl shadow-sm">
                   <p className="text-gray-800">
                     {comment.text}
                     {!comment.isApproved && comment.userId.username === username && (
