@@ -27,7 +27,6 @@ const BlogDetails = () => {
   }, [dispatch, blogs.length]);
 
   const blog = blogs.find(blog => blog._id === id);
-  console.log(blog)
   useEffect(() => {
     dispatch(fetchComments(id));
   }, [dispatch, id]);
