@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBlogs, fetchCategories, filterByCategory } from '../../features/blogs/blogSlice';
 import { Link } from 'react-router-dom';
@@ -6,8 +6,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const Card = ({ blogs, username }) => {
-
-  
   const handleReadMore = () => {
     if (!username) {
       toast.info('Please login to read this blog.', {
@@ -18,20 +16,16 @@ export const Card = ({ blogs, username }) => {
           fontSize: "20px",
           color: "#073ded",
           boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
-          borderLeft: "6px solid rgba(39, 159, 224, 0.88)", // warning yellow stripe
+          borderLeft: "6px solid rgba(39, 159, 224, 0.88)",
           padding: "1rem 1.2rem",
         }
       });
     }
   };
 
-
   return (
-    
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group">
       <div className="relative h-62 overflow-hidden">
-
-        {/* homepage photo ka path diya gya hai by condition kyoki dono aalg folder mein hai */}
         <img
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           src={blogs.photo}
@@ -85,10 +79,14 @@ export const Card = ({ blogs, username }) => {
   );
 };
 
-const Button = ({ category, onClick }) => {
+const Button = ({ category, onClick, isActive }) => {
   return (
     <button
-      className="px-5 py-2 rounded-full border text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm hover:shadow-md"
+      className={`px-5 py-2 rounded-full border text-sm font-medium transition shadow-sm hover:shadow-md ${
+        isActive
+          ? 'bg-blue-700 text-white'
+          : 'bg-blue-400 text-white hover:bg-blue-700'
+      }`}
       onClick={() => onClick(category.category)}
     >
       {category.category}
@@ -101,29 +99,43 @@ function Homepage() {
   const { categories, filteredBlogs, status } = useSelector(state => state.blog);
   const { username } = useSelector(state => state.auth);
 
+  const [activeCategory, setActiveCategory] = useState("All");
+
   useEffect(() => {
     dispatch(fetchBlogs());
     dispatch(fetchCategories());
   }, [dispatch]);
 
   const handleCategoryClick = (category) => {
+    setActiveCategory(category);
     dispatch(filterByCategory(category));
   };
 
   return (
     <div className="bg-gradient-to-br from-gray-100 to-white min-h-screen py-6">
       <div className="max-w-7xl mx-auto px-4">
+        {/* Category Buttons */}
         <div className="p-4 shadow bg-gradient-to-r from-blue-400 to-indigo-100 rounded-xl mb-6">
           <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
             <button
-              className="px-5 py-2 rounded-full border text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm hover:shadow-md"
+              className={`px-5 py-2 rounded-full border text-sm font-medium transition shadow-sm hover:shadow-md ${
+                activeCategory === "All"
+                  ? 'bg-blue-700 text-white'
+                  : 'bg-blue-400 text-white hover:bg-blue-700'
+              }`}
               onClick={() => handleCategoryClick("All")}
             >
               All
             </button>
+
             {categories.length > 0 ? (
               categories.map(cat => (
-                <Button key={cat._id} category={cat} onClick={handleCategoryClick} />
+                <Button
+                  key={cat._id}
+                  category={cat}
+                  onClick={handleCategoryClick}
+                  isActive={activeCategory === cat.category}
+                />
               ))
             ) : (
               <p className='text-blue-200 text-semibold'>Categories not found.</p>
@@ -131,6 +143,7 @@ function Homepage() {
           </div>
         </div>
 
+        {/* Blog Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {status === 'loading' ? (
             <p className="text-center col-span-full">Loading blogs...</p>
