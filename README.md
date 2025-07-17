@@ -1,6 +1,6 @@
  Blogging App - MERN Stack Project
-A full-featured blogging application built with the MERN stack (MongoDB, Express.js, React.js, Node.js).
-Includes features like:
+ A full-featured blogging application built with the MERN stack (MongoDB, Express.js, React.js, Node.js).
+ Includes features like:
 
  User & Admin authentication (JWT-based)
 
@@ -14,7 +14,7 @@ Includes features like:
 
  Image upload via Cloudinary
 
-🛡 Protected routes & token expiration handling
+ Protected routes & token expiration handling
 
  Admin dashboard with blog management
 
